@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/619758344d16e93725c39d0a/fd45bb84-8340-4010-bbde-66f31c1ca075/favicon.ico?format=100w" type="image/x-icon">
+    <title>RBFC Ladies Team Sheet Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+        h1, h2, h3 {
+            color: white;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #F7931A;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        /* Green color specifically for the Save button */
+        #saveButton {
+            background-color: #007504; /* Green color */
+        }
+        .team-section {
+            margin-bottom: 20px;
+            background-color: #4D4D4D;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .player-item {
+            display: flex;
+	    flex-wrap: wrap; /* Allows items to wrap to the next line */
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .player-item input[type="text"].player-number,
+        .player-inputs input[type="text"]#homePlayerNumberInput,
+        .player-inputs input[type="text"]#awayPlayerNumberInput {
+            width: 60px; /* Smaller width for player number fields */
+	    flex: 1 1 100px; /* Flex properties to allow responsive behavior */
+            margin-bottom: 5px;
+            margin-right: 5px; /* Space between number and name fields */
+        }
+        .player-item input[type="text"].player-name,
+        .player-inputs input[type="text"]#homePlayerNameInput,
+        .player-inputs input[type="text"]#awayPlayerNameInput {
+            flex-grow: 1; /* Allows the name fields to take up the remaining space */
+            min-width: 200px; /* Minimum width for name fields */
+        }
+        .player-item label {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        .player-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        .player-item button {
+            width: auto;
+            padding: 5px 10px;
+        }
+	.player-item button.delete-player {
+            flex: 0 1 auto;
+            margin-left: auto; /* Keep delete button on the right */
+            margin-bottom: 5px;
+    	}
+        .player-inputs {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .player-name-input {
+            display: flex;
+            gap: 10px;
+            width: 100%; /* Ensure full width for the input container */
+        }
+        .team-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .team-input input,
+        .team-input select {
+            flex: 1;
+        }
+        .error {
+            border: 2px solid red !important;
+        }
+        #resetHomePlayers, #resetAwayTeam {
+            background-color: #f44336; /* Red color */
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .team-logo {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            display: block;
+            object-fit: contain;
+        }
+	    @media (max-width: 600px) {
+                .player-item {
+                flex-direction: column; /* Stack items vertically on small screens */
+                align-items: flex-start;
+        }
+
+            .player-item button.delete-player {
+                align-self: flex-end; /* Ensure delete button aligns to the right */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>RBFC Ladies Team Sheet Update</h1>
+    
+    <div class="team-section">
+        <h2>Home Team</h2>
+        <img id="homeTeamLogoImage" class="team-logo" alt="Home Team Logo">
+        <button id="resetHomePlayers">Reset Players</button>
+        <input type="text" id="homeTeamName" placeholder="Home Team Name">
+        <input type="text" id="homeTeamLogo" placeholder="Home Team Logo URL">
+
+        <h3>Add/Update Players</h3>
+        <div class="player-inputs">
+            <div class="player-name-input">
+                <input type="text" id="homePlayerNumberInput" placeholder="No.">
+                <select id="homePlayerNameSelect">
+                    <option value="">-- Select player --</option>
+                </select>
+                <input type="text" id="homePlayerNameInput" placeholder="Or enter player name">    
+            </div>
+
+            <label for="homePlayerSubstituteInput">
+                <input type="checkbox" id="homePlayerSubstituteInput">
+                Sub.
+            </label>
+            <label for="homePlayerCaptainInput">  
+				<input type="checkbox" name="captain" id="homePlayerCaptainInput"> 
+				Cap.
+            </label>
+        </div>
+        <button id="homeAddPlayer">Add Player</button>
+        
+        <h3>Current Team</h3>
+        <div id="homePlayerList"></div>
+    </div>
+    
+    <div class="team-section">
+        <h2>Away Team</h2>
+        <img id="awayTeamLogoImage" class="team-logo" alt="Away Team Logo">
+        <button id="resetAwayTeam">Reset Away Team</button>
+        <div class="team-input">
+            <select id="awayTeamSelect">
+                <option value="">-- Select away team --</option>
+            </select>
+            <input type="text" id="awayTeamName" placeholder="Away Team Name">
+        </div>
+        <input type="text" id="awayTeamLogo" placeholder="Away Team Logo URL">
+
+        <h3>Add/Update Players</h3>
+        <div class="player-inputs">
+            <input type="text" id="awayPlayerNumberInput" placeholder="No.">
+            <input type="text" id="awayPlayerNameInput" placeholder="Enter player name">
+            <label for="awayPlayerSubstituteInput">
+                <input type="checkbox" id="awayPlayerSubstituteInput">
+                Sub.
+            </label>
+            <label for="awayPlayerCaptainInput">    
+				<input type="checkbox" name="captain" id="awayPlayerCaptainInput"> 
+				Cap.
+            </label>
+        </div>
+        <button id="awayAddPlayer">Add Player</button>
+        
+        <h3>Current Away Team</h3>
+        <div id="awayPlayerList"></div>
+        
+    </div>
+    
+    <button id="saveButton">Save Roster</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="update.js"></script>
+</body>
+</html>
