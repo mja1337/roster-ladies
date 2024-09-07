@@ -1,0 +1,183 @@
+/* Global Styles */
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+}
+
+.scaling-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  padding: 1vh 0;
+  background-color: #333;
+  text-align: center;
+}
+
+header h1 {
+  font-size: calc(10px + 1vmin);
+  margin: 0;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 1vh 2vw;
+  overflow: hidden;
+}
+
+/* Teams Container */
+.teams-container {
+  display: flex;
+  justify-content: center; /* Center the team containers horizontally */
+  width: 100%;
+  max-width: 900px;
+  margin: 2vh auto 0 auto; /* Add 2vh of space above the team containers */
+}
+
+/* Home Team Styling */
+.home-team {
+  background-color: #1c1c1c;
+  padding: 1vh 1.5vw;
+  border: 1px solid #F7931A;
+  border-radius: 8px;
+  width: 48%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1vw;
+}
+
+/* Away Team Styling */
+.away-team {
+  background-color: #1c1c1c;
+  padding: 1vh 1.5vw;
+  border: 1px solid #FFFFFF;
+  border-radius: 8px;
+  width: 48%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1vw;
+}
+
+/* Team Titles */
+.team h2 {
+  font-size: calc(10px + 1vmin); /* Increase the size of the team names */
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0.5vh 0;
+  text-transform: uppercase; /* Optional: to match the styling with uppercase text */
+  letter-spacing: 0.1em; /* Optional: add spacing between letters for style */
+}
+
+/* Team Logo */
+.team-logo {
+  width: auto;
+  height: 8vh;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto 0.5vh;
+  display: block;
+}
+
+/* Player List */
+.player-list, .substitute-list {
+  list-style: none;
+  padding: 4px;
+  margin: 0.2vh auto; /* Center the list itself horizontally */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /* Center the list items horizontally */
+}
+
+/* Player List Items */
+.player-list li, .substitute-list li {
+  background-color: #0c0c0c;
+  margin: 0.25vh 0;
+  padding: 0.5vh 1vw; /* Increase padding to account for centering */
+  border: 0.5px solid #444;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: left; /* Center text inside the list items */
+  font-size: calc(8px + 0.4vmin);
+  width: 100%; /* Ensure list items take full width */
+  max-width: 90%; /* Limit the width to prevent overflow */
+  min-width: 175px; /* Set a minimum width */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+
+/* Captain Icon */
+.captain-icon {
+  width: 0.9em;
+  height: 1em;
+  margin-left: 0.4em;
+}
+
+/* Substitutes Header */
+.substitutes-heading, .starting-xi-heading {
+  font-size: calc(8px + 0.2vmin); /* Shared font size */
+  margin: 0.1vh 0 0.2vh 0;
+  color: #FFFFFF; /* Ensure it’s white to match the text color */
+  text-align: center;
+  text-transform: uppercase; /* Optional: to match the styling with uppercase text */
+  letter-spacing: 0.1em; /* Optional: add spacing between letters for style */
+}
+
+/* Footer */
+footer {
+  padding: 5px 0;
+  background-color: #333;
+  text-align: center;
+}
+
+.banner-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.banner-image {
+  width: 30%;  /* Fixed width */
+  height: 10%;  /* Fixed height */
+  margin: 2px 5px;
+  object-fit: contain;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1200px) {
+  .scaling-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Ensure minimum font size */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 10px;
+  }
+}

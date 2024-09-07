@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<link href="styles.css" rel="stylesheet"/>
+<link rel="icon" href="https://images.squarespace-cdn.com/content/v1/619758344d16e93725c39d0a/fd45bb84-8340-4010-bbde-66f31c1ca075/favicon.ico?format=100w" type="image/x-icon">
+<title>RBFC Team Sheet</title>
+</head>
+<body>
+<div class="blackboard">
+  <div class="teams-container">
+    <div class="team home-team">
+      <img alt="Home Team Logo" class="team-logo" src="" id="homeTeamLogoImg"/>
+      <h2 id="homeTeamName">Home Team</h2>
+      <h3 class="starting-xi-heading">Starting XI</h3>
+      <ul class="player-list home-player-list"></ul>
+      <h3 class="substitutes-heading">Substitutes</h3>
+      <ul class="player-list home-substitute-list"></ul>
+    </div>
+    <div class="team away-team">
+      <img class="team-logo" id="awayTeamLogoImg" src=""/>
+      <h2 id="awayTeamName">Away Team</h2>
+      <h3 class="starting-xi-heading">Starting XI</h3>
+      <ul class="player-list away-player-list"></ul>
+      <h3 class="substitutes-heading">Substitutes</h3>
+      <ul class="player-list away-substitute-list"></ul>
+    </div>
+  </div>
+  <div class="banner-container">
+    <img src="https://raw.githubusercontent.com/mja1337/roster/main/rbfcsponsors.png" alt="RBFC Sponsors" class="banner-image">
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
